@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Loading from '../../components/Loading';
@@ -9,23 +8,25 @@ import { createUser } from '../../services/userAPI';
 class Login extends Component {
   constructor() {
     super();
-    this.handleLoginInputChange = this.handleLoginInputChange.bind(this);
-    this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
-    this.enableButton = this.enableButton.bind(this);
+    // this.handleLoginInputChange = this.handleLoginInputChange.bind(this);
+    // this.handleLoginSubmit = this.handleLoginSubmit.bind(this);
+    // this.enableButton = this.enableButton.bind(this);
+    // this.fetchUserAPI = this.fetchUserAPI.bind(this);
 
     this.state = {
       name: '',
       isButtonDisabled: true,
       isLoading: false,
-      isRedirect: false,
+      // isRedirect: false,
     };
   }
 
-  componentDidMount() {
-    this.fetchUserAPI();
+  redirectRoute = () => {
+    const { history } = this.props;
+    history.push('/search');
   }
 
-  handleLoginInputChange({ target }) {
+  handleLoginInputChange = ({ target }) => {
     const { name, value } = target;
     const MIN_NAME_LENGTH = 3;
     this.setState({
@@ -33,19 +34,21 @@ class Login extends Component {
     }, () => this.enableButton(MIN_NAME_LENGTH, value));
   }
 
-  handleLoginSubmit(event) {
+  handleLoginSubmit = (event) => {
     event.preventDefault();
     const { name } = this.state;
     this.fetchUserAPI(name);
-    this.setState({ isLoading: true, isRedirect: true });
+    this.setState({ isLoading: true });
   }
 
-  /* Source: Slack Vitor Correa */
+  /* Source: Slack Vitor Correa / Suporte Rod */
   fetchUserAPI = async (newUser) => {
-    await createUser(newUser);
+    await createUser({ name: newUser });
+    this.redirectRoute();
+    // this.setState({ isRedirect: true });
   }
 
-  enableButton(inputLength, value) {
+  enableButton = (inputLength, value) => {
     if (value.length >= inputLength) {
       this.setState({ isButtonDisabled: false });
     }
@@ -57,8 +60,12 @@ class Login extends Component {
       name,
       isButtonDisabled,
       isLoading,
-      isRedirect,
+      // isRedirect,
     } = this.state;
+
+    // if (isRedirect) {
+    //   return <Redirect to="/search" />;
+    // }
 
     return (
       <div className="login" data-testid="page-login">
@@ -94,10 +101,15 @@ class Login extends Component {
           />
         </form>
         {isLoading && <Loading />}
-        {isRedirect && <Redirect to="/search" />}
+        {/* {isRedirect && <Redirect to="/search" />} */}
       </div>
     );
   }
 }
+
+/* erro no history não reconhece. Incluir PropTypes - Ajuda Giovanni */
+Login.propTypes = {
+  history: PropTypes.objectOf(PropTypes.any),
+}.isRequired;
 
 export default Login;
