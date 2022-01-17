@@ -32,9 +32,9 @@ class Header extends Component {
             <h1>Header</h1>
           </div>
           <div className="header__right">
-            <p className="header__user" data-testid="header-user-name">
+            <div className="header__user" data-testid="header-user-name">
               {(isLoading ? <Loading /> : name)}
-            </p>
+            </div>
           </div>
         </section>
         <section className="nav">

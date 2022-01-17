@@ -22,7 +22,7 @@ class Input extends Component {
     return (
       <div className={ classDiv }>
         <label htmlFor={ id }>
-          {`${label}: `}
+          {label}
           <input
             id={ id }
             type={ type }

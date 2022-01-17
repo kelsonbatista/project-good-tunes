@@ -10,3 +10,13 @@
   justify-content: space-around;
   align-items: center;
 }
+
+.search__bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search__input-div, .search__button-div {
+  padding: 0 10px;
+}
