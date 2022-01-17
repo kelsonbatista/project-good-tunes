@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import Header from '../../components/Header';
 
 class Favorites extends Component {
   render() {
     return (
-      <div data-testid="page-favorites">
-        <h1>Favorites</h1>
-      </div>
+      <>
+        <Header />
+        <div data-testid="page-favorites">
+          <h1>Favorites</h1>
+        </div>
+      </>
     );
   }
 }

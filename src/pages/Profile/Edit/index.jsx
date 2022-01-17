@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import Header from '../../../components/Header';
 
 class EditProfile extends Component {
   render() {
     return (
-      <div data-testid="page-profile-edit">
-        <h1>Edit Profile</h1>
-      </div>
+      <>
+        <Header />
+        <div data-testid="page-profile-edit">
+          <h1>Edit Profile</h1>
+        </div>
+      </>
     );
   }
 }
