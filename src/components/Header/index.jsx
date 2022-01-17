@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { getUser } from '../../services/userAPI';
+import { Link } from 'react-router-dom';
 import '../../project.css';
 import Loading from '../Loading';
+import { getUser } from '../../services/userAPI';
 
 class Header extends Component {
   constructor() {
@@ -34,6 +35,17 @@ class Header extends Component {
             <p className="header__user" data-testid="header-user-name">
               {(isLoading ? <Loading /> : name)}
             </p>
+          </div>
+        </section>
+        <section className="nav">
+          <div className="nav__search">
+            <Link to="/search" data-testid="link-to-search">Pesquisa</Link>
+          </div>
+          <div className="nav__favorites">
+            <Link to="/favorites" data-testid="link-to-favorites">Favoritas</Link>
+          </div>
+          <div className="nav__profile">
+            <Link to="/profile" data-testid="link-to-profile">Perfil</Link>
           </div>
         </section>
       </header>
