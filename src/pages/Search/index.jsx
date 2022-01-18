@@ -42,10 +42,17 @@ class Search extends Component {
   }
 
   fetchSearchAlbum = async (artist) => {
-    const data = await searchAlbumsAPI(artist);
-    this.setState({ searchResult: data, isLoading: false });
-    if (data.length === 0) {
-      this.setState({ isNotFound: true });
+    try {
+      const data = await searchAlbumsAPI(artist);
+      this.setState({ searchResult: data, isLoading: false });
+      if (data.length === 0 || !data) {
+        this.setState({ isNotFound: true });
+      }
+      // console.log(data);
+      // const { searchResult } = this.state;
+      // console.log(`resusltado ==> ${searchResult}`);
+    } catch (error) {
+      return `Error found: ${error}`;
     }
   }
 
