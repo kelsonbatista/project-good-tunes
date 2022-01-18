@@ -20,3 +20,23 @@
 .search__input-div, .search__button-div {
   padding: 0 10px;
 }
+
+.search__input-none, .search__button-none {
+  display: none;
+}
+
+.search__list {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.card {
+  padding: 0 25px;
+}
+
+.card__image {
+  width: 220px;
+}
