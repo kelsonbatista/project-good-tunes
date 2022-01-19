@@ -22,9 +22,13 @@ class Album extends Component {
   }
 
   fetchSearchAlbum = async () => {
-    const { match: { params: { id } } } = this.props;
-    const data = await getMusics(id);
-    this.setState({ collection: data });
+    try {
+      const { match: { params: { id } } } = this.props;
+      const data = await getMusics(id);
+      this.setState({ collection: data });
+    } catch (error) {
+      return (`Error found: ${error}`);
+    }
   }
 
   render() {
@@ -49,11 +53,13 @@ class Album extends Component {
           </div>
           <div className="album__musics">
             {/* skip first array - slice - https://stackoverflow.com/questions/42970515/javascript-built-in-methods-how-to-skip-the-first-iteration */}
-            {musics.map(({ trackName, previewUrl }, index) => (
+            {musics.map(({ trackName, previewUrl, trackId }, index) => (
               <MusicCard
                 key={ index }
+                data={ collection }
                 trackName={ trackName }
                 previewUrl={ previewUrl }
+                trackId={ trackId }
               />
             ))}
           </div>

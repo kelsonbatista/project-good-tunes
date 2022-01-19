@@ -14,6 +14,7 @@ class Input extends Component {
       maxLength,
       placeholder,
       disabled,
+      checked,
       value,
       required,
       onChange,
@@ -33,6 +34,7 @@ class Input extends Component {
             maxLength={ maxLength }
             placeholder={ placeholder }
             disabled={ disabled }
+            checked={ checked }
             value={ value }
             required={ required }
             onChange={ onChange }
@@ -54,6 +56,7 @@ Input.propTypes = {
   maxLength: PropTypes.number,
   placeholder: PropTypes.string,
   disabled: PropTypes.bool,
+  checked: PropTypes.bool,
   value: PropTypes.string,
   required: PropTypes.bool,
 }.isRequired;

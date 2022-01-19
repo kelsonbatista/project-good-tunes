@@ -1,12 +1,60 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Input from '../Input';
+import { addSong } from '../../services/favoriteSongsAPI';
 
 class MusicCard extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      isFavorite: false,
+      isLoading: false,
+    };
+  }
+
+  handleAddSong = ({ target }) => {
+    const { data } = this.props;
+    const isChecked = target.checked;
+    this.setState({ isFavorite: isChecked, isLoading: true });
+    this.fetchFavoriteSongsAPI(data);
+  }
+
+  fetchFavoriteSongsAPI = (data) => {
+    try {
+      addSong({ ...data });
+      this.setState({ isLoading: false });
+    } catch (error) {
+      return (`Error found: ${error}`);
+    }
+  }
+
   render() {
+    const {
+      isFavorite,
+      isLoading,
+    } = this.state;
+
     const {
       trackName,
       previewUrl,
+      trackId,
     } = this.props;
+
+    const checkboxElement = (
+      <Input
+        label="Favorita"
+        id="favorites"
+        type="checkbox"
+        name="favorites"
+        dataTestid={ `checkbox-music-${trackId}` }
+        classElement="music__favorites"
+        classDiv="music__favorites-div"
+        checked={ isFavorite }
+        required={ false }
+        onChange={ this.handleAddSong }
+      />
+    );
 
     return (
       <div className="music">
@@ -21,6 +69,9 @@ class MusicCard extends Component {
             .
           </audio>
         </div>
+        <div>
+          {isLoading ? 'Carregando...' : checkboxElement}
+        </div>
       </div>
     );
   }
@@ -29,6 +80,8 @@ class MusicCard extends Component {
 MusicCard.propTypes = {
   trackName: PropTypes.string,
   previewUrl: PropTypes.string,
+  trackId: PropTypes.number,
+  data: PropTypes.array,
 }.isRequired;
 
 export default MusicCard;
