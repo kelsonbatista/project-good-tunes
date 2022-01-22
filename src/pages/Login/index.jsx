@@ -51,6 +51,8 @@ class Login extends Component {
   enableButton = (inputLength, value) => {
     if (value.length >= inputLength) {
       this.setState({ isButtonDisabled: false });
+    } else {
+      this.setState({ isButtonDisabled: true });
     }
   }
 
