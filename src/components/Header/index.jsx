@@ -18,9 +18,10 @@ class Header extends Component {
     this.fetchUserApi();
   }
 
-  fetchUserApi = async () => {
-    const { name } = await getUser();
-    this.setState({ name, isLoading: false });
+  fetchUserApi = () => {
+    getUser().then(({ name }) => {
+      this.setState({ name, isLoading: false });
+    });
   }
 
   render() {

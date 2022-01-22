@@ -53,13 +53,14 @@ class Album extends Component {
           </div>
           <div className="album__musics">
             {/* skip first array - slice - https://stackoverflow.com/questions/42970515/javascript-built-in-methods-how-to-skip-the-first-iteration */}
-            {musics.map(({ trackName, previewUrl, trackId }, index) => (
+            {musics.map((music, index) => (
               <MusicCard
                 key={ index }
-                data={ collection }
-                trackName={ trackName }
-                previewUrl={ previewUrl }
-                trackId={ trackId }
+                tracks={ musics }
+                track={ music }
+                trackName={ music.trackName }
+                previewUrl={ music.previewUrl }
+                trackId={ music.trackId }
               />
             ))}
           </div>

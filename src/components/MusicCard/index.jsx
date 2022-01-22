@@ -13,20 +13,19 @@ class MusicCard extends Component {
     };
   }
 
-  handleAddSong = ({ target }) => {
-    const { data } = this.props;
-    const isChecked = target.checked;
-    this.setState({ isFavorite: isChecked, isLoading: true });
-    this.fetchFavoriteSongsAPI(data);
+  handleChange = async (event) => {
+    const checkState = event.target.checked;
+    if (checkState) {
+      this.handleAddSong();
+    }
   }
 
-  fetchFavoriteSongsAPI = (data) => {
-    try {
-      addSong({ ...data });
+  handleAddSong = () => {
+    const { track } = this.props;
+    this.setState({ isLoading: false, isFavorite: true });
+    addSong(track).then(() => {
       this.setState({ isLoading: false });
-    } catch (error) {
-      return (`Error found: ${error}`);
-    }
+    });
   }
 
   render() {
@@ -52,7 +51,7 @@ class MusicCard extends Component {
         classDiv="music__favorites-div"
         checked={ isFavorite }
         required={ false }
-        onChange={ this.handleAddSong }
+        onChange={ this.handleChange }
       />
     );
 
@@ -80,8 +79,9 @@ class MusicCard extends Component {
 MusicCard.propTypes = {
   trackName: PropTypes.string,
   previewUrl: PropTypes.string,
+  tracks: PropTypes.array,
+  track: PropTypes.object,
   trackId: PropTypes.number,
-  data: PropTypes.array,
 }.isRequired;
 
 export default MusicCard;
