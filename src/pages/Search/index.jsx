@@ -101,41 +101,40 @@ class Search extends Component {
     );
 
     return (
-      <>
+      <div className="page">
         <Header />
-        <div data-testid="page-search">
-          <h1>Search</h1>
-        </div>
-        { isLoading && <Loading /> }
-        <div className="search__bar">
-          <Input
-            label=""
-            id="search-artist-input"
-            type="text"
-            name="searchQuery"
-            dataTestid="search-artist-input"
-            classElement={ isLoading ? 'search__input-none' : 'search__input' }
-            classDiv="search__input-div"
-            maxLength="200"
-            placeholder="Nome do artista"
-            disabled=""
-            value={ searchQuery }
-            required={ false }
-            onChange={ this.handleSearchChange }
-          />
+        <div className="search" data-testid="page-search">
+          { isLoading && <Loading /> }
+          <div className="search__bar">
+            <Input
+              label=""
+              id="search-artist-input"
+              type="text"
+              name="searchQuery"
+              dataTestid="search-artist-input"
+              classElement={ isLoading ? 'search__input-none' : 'search__input' }
+              classDiv="search__input-div"
+              maxLength="200"
+              placeholder="Nome do artista"
+              disabled=""
+              value={ searchQuery }
+              required={ false }
+              onChange={ this.handleSearchChange }
+            />
 
-          <Button
-            label="Pesquisar"
-            id="search-submit-button"
-            type="submit"
-            name="search-submit-button"
-            dataTestid="search-artist-button"
-            classElement={ isLoading ? 'search__button-none' : 'search__button' }
-            classDiv="search__button-div"
-            disabled={ isButtonDisabled }
-            param=""
-            onClick={ this.handleSearchSubmit }
-          />
+            <Button
+              label="Pesquisar"
+              id="search-submit-button"
+              type="submit"
+              name="search-submit-button"
+              dataTestid="search-artist-button"
+              classElement={ isLoading ? 'search__button-none' : 'search__button' }
+              classDiv="search__button-div"
+              disabled={ isButtonDisabled }
+              param=""
+              onClick={ this.handleSearchSubmit }
+            />
+          </div>
         </div>
         <div className="search__result">
           <div className="search__title">
@@ -143,7 +142,7 @@ class Search extends Component {
           </div>
           {(isNotFound ? NOT_FOUND : COLLECTIONS)}
         </div>
-      </>
+      </div>
     );
   }
 }

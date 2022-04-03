@@ -22,24 +22,24 @@ class Input extends Component {
 
     return (
       <div className={ classDiv }>
-        <label htmlFor={ id }>
+        <label htmlFor={ id } data-testid={ dataTestid }>
           {label}
-          <input
-            id={ id }
-            type={ type }
-            name={ name }
-            className={ classElement }
-            data-testid={ dataTestid }
-            data-label={ label }
-            maxLength={ maxLength }
-            placeholder={ placeholder }
-            disabled={ disabled }
-            checked={ checked }
-            value={ value }
-            required={ required }
-            onChange={ onChange }
-          />
         </label>
+        <input
+          id={ id }
+          type={ type }
+          name={ name }
+          className={ classElement }
+          data-testid={ dataTestid }
+          data-label={ label }
+          maxLength={ maxLength }
+          placeholder={ placeholder }
+          disabled={ disabled }
+          checked={ checked }
+          value={ value }
+          required={ required }
+          onChange={ onChange }
+        />
       </div>
     );
   }

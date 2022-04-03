@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  background: #e6e6e6;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -16,4 +17,151 @@ code {
   align-items: center;
   display: flex;
   justify-content: center;
+}
+
+.login {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.login img {
+  width: 40%;
+}
+
+.login input, .login button {
+  border-radius: 10px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 300px;
+}
+
+.login button {
+  background: rgb(255, 0, 98);
+  border: 0;
+  color: white;
+  font-weight: 800;
+  width: 325px;
+}
+
+.login button:hover {
+  background: rgb(197, 0, 76);
+}
+
+.header1 {
+  background: rgb(255, 0, 98);
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 1000;
+}
+
+.header__div {
+  align-items: center;
+  color: white;
+  display: flex;
+  font-size: 1.3rem;
+  font-weight: 700;
+  justify-content: space-between;
+  left: 0;
+  margin: auto;
+  padding: 15px 0;
+  width: 90%;
+}
+
+.header__left img {
+  width: 130px;
+}
+
+.nav {
+  width: 50%;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+}
+
+.header__right {
+  align-items: center;
+  display: flex;
+  font-weight: 500;
+  justify-content: space-between;
+  width: 150px;
+}
+
+.avatar {
+  width: 50px;
+}
+
+.search {
+  display: flex;
+  margin-top: 150px;
+}
+
+.search__bar {
+  padding: 30px 0;
+  margin: auto;
+  width: 90%;
+}
+
+.search__input, .search__button {
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.search__input {
+  width: 800px;
+}
+
+.search__result {
+  font-size: 20px;
+  margin: auto;
+  width: 90%;
+}
+
+.search__title {
+  padding: 20px 0;
+}
+
+.card__collection {
+  margin-bottom: -10px;
+}
+
+.card__collection, .card__artist {
+  color: #222;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.album {
+  margin: auto;
+  margin-top: 150px;
+  margin-bottom: 300px;
+  width: 90%;
+}
+
+.album__cover {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.album__musics {
+  font-size: 18px;
+}
+
+audio::-webkit-media-controls-panel { 
+  background: #ccc;
+}
+
+#musicCard {
+  padding-left: 30px;
+}
+
+#favorites {
+  margin-left: 10px;
+  transform: scale(1.3);
 }

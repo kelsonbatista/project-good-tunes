@@ -4,6 +4,7 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 import Loading from '../../components/Loading';
 import { createUser } from '../../services/userAPI';
+import logo from '../../assets/images/logo.gif';
 
 class Login extends Component {
   constructor() {
@@ -71,10 +72,10 @@ class Login extends Component {
 
     return (
       <div className="login" data-testid="page-login">
-        <h1>Login</h1>
+        <img src={ logo } alt="Logo" />
         <form onSubmit={ this.handleLoginSubmit }>
           <Input
-            label="Name"
+            label=""
             id="login-name-input"
             type="text"
             name="name"
@@ -82,7 +83,7 @@ class Login extends Component {
             classElement="login__input"
             classDiv="login__input-div"
             maxLength="50"
-            placeholder=""
+            placeholder="Type your name"
             disabled=""
             value={ name }
             required={ isRequired }

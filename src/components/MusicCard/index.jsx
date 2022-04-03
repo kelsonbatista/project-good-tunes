@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Input from '../Input';
-import { addSong, getFavoriteSongs } from '../../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../../services/favoriteSongsAPI';
+// import Loading from '../Loading';
 
 class MusicCard extends Component {
   constructor() {
@@ -14,14 +15,14 @@ class MusicCard extends Component {
   }
 
   componentDidMount() {
-    this.handleFavorites();
+    // this.handleFavorites();
   }
 
   componentWillUnmount() {
-    this.setState(() => {});
+    // this.setState(() => {});
   }
 
-  handleFavorites = async () => {
+  handleFavorites = () => {
     const { track } = this.props;
     getFavoriteSongs().then((savedSongs) => {
       savedSongs.forEach((savedSong) => {
@@ -35,16 +36,27 @@ class MusicCard extends Component {
   handleChange = (event) => {
     const checkState = event.target.checked;
     if (checkState) {
+      this.setState({ isLoading: true });
       this.handleAddSong();
+    } else {
+      // this.setState({ isLoading: true });
+      // this.handleRemoveSong();
     }
   }
 
   handleAddSong = () => {
     const { track } = this.props;
-    this.setState({ isLoading: false, isFavorite: true });
+    this.setState({ isFavorite: true });
     addSong(track).then(() => {
       this.setState({ isLoading: false });
     });
+  }
+
+  handleRemoveSong = () => {
+    const { tracks, track } = this.props;
+    this.setState({ isLoading: true, isFavorite: false });
+    const selectedSong = tracks.filter((music) => music.trackId === track.trackId);
+    removeSong(...selectedSong).then(() => this.setState({ isLoading: false }));
   }
 
   render() {
@@ -86,7 +98,7 @@ class MusicCard extends Component {
             .
           </audio>
         </div>
-        <div>
+        <div id="musicCard">
           {isLoading ? 'Carregando...' : checkboxElement}
         </div>
       </div>

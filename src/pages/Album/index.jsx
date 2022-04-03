@@ -42,27 +42,27 @@ class Album extends Component {
     return (
       <>
         <Header />
-        <div data-testid="page-album">
+        <div className="album" data-testid="page-album">
           <h1>Album</h1>
-        </div>
-        <div className="album__div">
-          <div className="album__cover">
-            <img src={ collection[0].artworkUrl100 } alt="" />
-            <p data-testid="album-name">{collection[0].collectionName}</p>
-            <p data-testid="artist-name">{collection[0].artistName}</p>
-          </div>
-          <div className="album__musics">
-            {/* skip first array - slice - https://stackoverflow.com/questions/42970515/javascript-built-in-methods-how-to-skip-the-first-iteration */}
-            {musics.map((music, index) => (
-              <MusicCard
-                key={ index }
-                tracks={ musics }
-                track={ music }
-                trackName={ music.trackName }
-                previewUrl={ music.previewUrl }
-                trackId={ music.trackId }
-              />
-            ))}
+          <div className="album__div">
+            <div className="album__cover">
+              <img src={ collection[0].artworkUrl100 } alt="" />
+              <p data-testid="album-name">{collection[0].collectionName}</p>
+              <p data-testid="artist-name">{collection[0].artistName}</p>
+            </div>
+            <div className="album__musics">
+              {/* skip first array - slice - https://stackoverflow.com/questions/42970515/javascript-built-in-methods-how-to-skip-the-first-iteration */}
+              {musics.map((music, index) => (
+                <MusicCard
+                  key={ index }
+                  tracks={ musics }
+                  track={ music }
+                  trackName={ music.trackName }
+                  previewUrl={ music.previewUrl }
+                  trackId={ music.trackId }
+                />
+              ))}
+            </div>
           </div>
         </div>
       </>
