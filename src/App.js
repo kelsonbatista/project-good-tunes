@@ -12,7 +12,7 @@ import NotFound from './pages/NotFound';
 class App extends React.Component {
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename="/project-good-tunes">
         <Switch>
           <Route exact path="/search" component={ Search } />
           <Route exact path="/album/:id" component={ Album } />
