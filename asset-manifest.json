@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/project-good-tunes/static/css/main.d79d8d3d.css",
+    "main.js": "/project-good-tunes/static/js/main.c2d09e04.js",
+    "static/media/logo.gif": "/project-good-tunes/static/media/logo.a20724847631304b001e.gif",
+    "static/media/user.png": "/project-good-tunes/static/media/user.a6143582309785dca610.png",
+    "index.html": "/project-good-tunes/index.html",
+    "main.d79d8d3d.css.map": "/project-good-tunes/static/css/main.d79d8d3d.css.map",
+    "main.c2d09e04.js.map": "/project-good-tunes/static/js/main.c2d09e04.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d79d8d3d.css",
+    "static/js/main.c2d09e04.js"
+  ]
+}
