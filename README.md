@@ -12,6 +12,7 @@ This project is an application to search for a band or artist, view and play son
  - React Router
  - API requests / *Requisições API*
  - State management / *Gerenciamento de estados*
+ - Local Storage
 
 ---
 # Layout
